@@ -28,3 +28,11 @@ class ProductPage(BasePage):
     def cart_price_contain_product_price(self):
         assert self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text == \
                self.browser.find_element(*ProductPageLocators.CART_PRICE).text, "Cart price not contain product price"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_ADDED_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_be_disappeared_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.PRODUCT_ADDED_MESSAGE), \
+            "Success message is presented, but should be disappeared"
